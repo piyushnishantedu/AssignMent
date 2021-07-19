@@ -15,7 +15,6 @@
 		0D016E4026A28BAB00B6F1CE /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0D016E3F26A28BAB00B6F1CE /* Moya */; };
 		0D016E4226A28BAB00B6F1CE /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 0D016E4126A28BAB00B6F1CE /* ReactiveMoya */; };
 		0D016E4426A28BAB00B6F1CE /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 0D016E4326A28BAB00B6F1CE /* RxMoya */; };
-		0D016E4926A2AB2600B6F1CE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016E4826A2AB2600B6F1CE /* API.swift */; };
 		0D016E4E26A2B32700B6F1CE /* Moya+ObjectMapper+RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016E4D26A2B32700B6F1CE /* Moya+ObjectMapper+RxSwift.swift */; };
 		0D016E5326A2BECC00B6F1CE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016E5226A2BECC00B6F1CE /* String+Extension.swift */; };
 		0D099C8B269FEA06008E90C8 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0D099C8A269FEA06008E90C8 /* RxSwift */; };
@@ -100,7 +99,6 @@
 		0D016E2926A283A100B6F1CE /* DashBoardNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardNetworkManager.swift; sourceTree = "<group>"; };
 		0D016E2E26A2841700B6F1CE /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		0D016E3326A2843800B6F1CE /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
-		0D016E4826A2AB2600B6F1CE /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		0D016E4D26A2B32700B6F1CE /* Moya+ObjectMapper+RxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya+ObjectMapper+RxSwift.swift"; sourceTree = "<group>"; };
 		0D016E5226A2BECC00B6F1CE /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		0D099C9F26A0AA62008E90C8 /* FoodListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewController.swift; sourceTree = "<group>"; };
@@ -321,7 +319,6 @@
 			isa = PBXGroup;
 			children = (
 				0D016E2926A283A100B6F1CE /* DashBoardNetworkManager.swift */,
-				0D016E4826A2AB2600B6F1CE /* API.swift */,
 				0D016E4D26A2B32700B6F1CE /* Moya+ObjectMapper+RxSwift.swift */,
 				0D985E3226A47F2800F85465 /* CartNetworkManager.swift */,
 			);
@@ -566,7 +563,6 @@
 				0D985DDA26A39DEB00F85465 /* FoodItemTableViewCell.swift in Sources */,
 				0D099CA526A0AB56008E90C8 /* UIView+Extension.swift in Sources */,
 				0D016E5326A2BECC00B6F1CE /* String+Extension.swift in Sources */,
-				0D016E4926A2AB2600B6F1CE /* API.swift in Sources */,
 				0D985E1A26A4793800F85465 /* CartViewPresenter.swift in Sources */,
 				0D985DD426A34A1700F85465 /* UIFont+extension.swift in Sources */,
 				0DF86AA1269F4E99001F5481 /* AppDelegate.swift in Sources */,
