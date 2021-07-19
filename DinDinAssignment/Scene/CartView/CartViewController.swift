@@ -52,9 +52,9 @@ class CartViewController: UIViewController, NavigationBarAppearance {
     }
     
     private func configureView() {
-        cartButton.setTitle("Cart", for: .normal)
-        orderButton.setTitle("Order", for: .normal)
-        informationButton.setTitle("Info", for: .normal)
+        cartButton.setTitle(Constant.CartViewController.ButtonTitle.cart.rawValue, for: .normal)
+        orderButton.setTitle(Constant.CartViewController.ButtonTitle.order.rawValue, for: .normal)
+        informationButton.setTitle(Constant.CartViewController.ButtonTitle.info.rawValue, for: .normal)
         cartButton.tag = Option.cart.rawValue
         orderButton.tag = Option.order.rawValue
         informationButton.tag = Option.information.rawValue
@@ -79,13 +79,13 @@ class CartViewController: UIViewController, NavigationBarAppearance {
     }
     
     private func getCartItemCell(with cartItem: CartItem, from table: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = table.dequeueReusableCell(withIdentifier: "CartItemTableViewCell", for: indexPath) as? CartItemTableViewCell
+        let cell = table.dequeueReusableCell(withIdentifier: Constant.CartViewController.CellIdentifier.cartItemTableViewCell.rawValue, for: indexPath) as? CartItemTableViewCell
         cell?.update(with: cartItem)
         return cell ?? UITableViewCell()
     }
     
     private func getTotalPriceCell(from table: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = table.dequeueReusableCell(withIdentifier: "CartTotalTableViewCell", for: indexPath) as? CartTotalTableViewCell
+        let cell = table.dequeueReusableCell(withIdentifier: Constant.CartViewController.CellIdentifier.cartTotalTableViewCell.rawValue, for: indexPath) as? CartTotalTableViewCell
         cell?.update(with: cartViewPresenter.output.totalPrice)
         return cell ?? UITableViewCell()
     }
@@ -103,8 +103,8 @@ class CartViewController: UIViewController, NavigationBarAppearance {
     
     
     private func cartItemSetup() {
-        cartItemTableView.register(UINib(nibName: "CartItemTableViewCell", bundle: nil), forCellReuseIdentifier: "CartItemTableViewCell")
-        cartItemTableView.register(UINib(nibName: "CartTotalTableViewCell", bundle: nil), forCellReuseIdentifier: "CartTotalTableViewCell")
+        cartItemTableView.register(UINib(nibName: Constant.CartViewController.CellIdentifier.cartItemTableViewCell.rawValue, bundle: nil), forCellReuseIdentifier: Constant.CartViewController.CellIdentifier.cartItemTableViewCell.rawValue)
+        cartItemTableView.register(UINib(nibName: Constant.CartViewController.CellIdentifier.cartTotalTableViewCell.rawValue, bundle: nil), forCellReuseIdentifier: Constant.CartViewController.CellIdentifier.cartTotalTableViewCell.rawValue)
         
         cartItemTableView.rowHeight = UITableView.automaticDimension
         cartItemTableView.estimatedRowHeight = 44

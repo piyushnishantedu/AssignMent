@@ -30,7 +30,6 @@ class FoodListViewController: UIViewController, NavigationBarAppearance {
     
     @IBOutlet weak var cartButton: CartButton!
     
-    var addItemButtonAction = BehaviorRelay<Int?>(value: nil)
     
     var foodPresenter: FoodViewPresenter!
     
@@ -57,7 +56,7 @@ class FoodListViewController: UIViewController, NavigationBarAppearance {
     }
     
     private func configureView() {
-        addItemButtonAction.asDriver(onErrorJustReturn: -10).drive { [weak self] (index) in
+        foodPresenter.addToCartAction.asDriver(onErrorJustReturn: -10).drive { [weak self] (index) in
             guard let self = self, let item = Int(self.cartButton.badge ?? "0"), let ind = index else { return }
             self.cartButton.badge = "\(item + 1)"
         }.disposed(by: self.bag)
@@ -68,9 +67,9 @@ class FoodListViewController: UIViewController, NavigationBarAppearance {
         }.disposed(by: bag)
 
         
-        pizzaButton.setTitle("Pizza", for: .normal)
-        sushiButton.setTitle("Sushi", for: .normal)
-        drinksButton.setTitle("Drinks", for: .normal)
+        pizzaButton.setTitle(Constant.FoodListViewController.ButtonTitle.pizza.rawValue, for: .normal)
+        sushiButton.setTitle(Constant.FoodListViewController.ButtonTitle.sushi.rawValue, for: .normal)
+        drinksButton.setTitle(Constant.FoodListViewController.ButtonTitle.drinks.rawValue, for: .normal)
         pizzaButton.tag = FoodCategoryType.pizza.rawValue
         sushiButton.tag = FoodCategoryType.sushi.rawValue
         drinksButton.tag = FoodCategoryType.drinks.rawValue
@@ -100,17 +99,16 @@ class FoodListViewController: UIViewController, NavigationBarAppearance {
     }
     
     private func setUpListView() {
-        itemListView.register(UINib(nibName: "FoodItemTableViewCell", bundle: nil), forCellReuseIdentifier: "FoodItemTableViewCell")
+        itemListView.register(UINib(nibName: Constant.FoodListViewController.CellIdentifier.foodItemTableViewCell.rawValue, bundle: nil), forCellReuseIdentifier: Constant.FoodListViewController.CellIdentifier.foodItemTableViewCell.rawValue)
         
         itemListView.rowHeight = UITableView.automaticDimension
         itemListView.estimatedRowHeight = 44
         itemListView.separatorStyle = .none
         
-        foodItems.bind(to: itemListView.rx.items(cellIdentifier: "FoodItemTableViewCell")) { row, model, cell in
+        foodItems.bind(to: itemListView.rx.items(cellIdentifier: Constant.FoodListViewController.CellIdentifier.foodItemTableViewCell.rawValue)) { row, model, cell in
             guard let itemCell = cell as? FoodItemTableViewCell else { return }
-            itemCell.updateCell()
-            itemCell.itemDetailView.update(with: model, tag: row)
-            itemCell.itemDetailView.addItemAction.bind(to: self.addItemButtonAction).disposed(by: itemCell.bag)
+            itemCell.updateCell(with: model, tag: row)
+            itemCell.addItemAction.bind(to: self.foodPresenter.addToCartAction).disposed(by: itemCell.bag)
         }.disposed(by: bag)
     }
     

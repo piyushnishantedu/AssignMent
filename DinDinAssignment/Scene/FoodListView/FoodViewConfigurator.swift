@@ -8,7 +8,7 @@
 import Foundation
 import RxMoya
 import RxSwift
-import  RxCocoa
+import RxCocoa
 import UIKit
 
 // FOOD LIST
@@ -20,7 +20,7 @@ typealias FoodListViewPresenterDependencies = (
 protocol FoodViewPresenterInput {
     var viewDidLoadTrigger: PublishRelay<Void> {  get }
     var getFoodList: PublishRelay<Void> { get }
-    var addToCartAction: PublishRelay<Void> { get }
+    var addToCartAction: PublishRelay<Int?> { get }
 }
 
 protocol FoodViewPresenterOutPut {
@@ -36,8 +36,8 @@ final class FoodListConfigurator {
     func getFoodListViewController() -> FoodListViewController {
         let dep = (interactor: FoodViewInteractor(), router: FoodViewRouter())
         let foodPresenter = FoodViewPresenter(dependencies: dep)
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let foodView = storyBoard.instantiateViewController(withIdentifier: "FoodListViewController") as! FoodListViewController
+        let storyBoard = UIStoryboard(name: Constant.storyBoardName.main.rawValue, bundle: nil)
+        let foodView = storyBoard.instantiateViewController(withIdentifier: Constant.FoodListViewController.identifier) as! FoodListViewController
         foodView.foodPresenter = foodPresenter
         return foodView
     }

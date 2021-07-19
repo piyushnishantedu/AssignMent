@@ -17,7 +17,7 @@ final class FoodViewPresenter: FoodViewPresenterInterface, FoodViewPresenterInpu
     // INPUT
     var viewDidLoadTrigger: PublishRelay<Void>  = PublishRelay<Void>()
     var getFoodList: PublishRelay<Void>  = PublishRelay<Void>()
-    var addToCartAction: PublishRelay<Void>  = PublishRelay<Void>()
+    var addToCartAction: PublishRelay<Int?>  = PublishRelay<Int?>()
     
     //OUTPUT
     var foodItem: PublishRelay<[FoodItem]>

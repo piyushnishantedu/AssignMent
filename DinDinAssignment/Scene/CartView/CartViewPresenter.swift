@@ -19,7 +19,6 @@ final class CartViewPresenter: CartViewPresenterInterface, CartViewPresenterInpu
     // Input
     var viewDidLoadTrigger: PublishRelay<Void> = PublishRelay<Void>()
     var getCartItem: PublishRelay<Void> = PublishRelay<Void>()
-//    var dataSource: RxTableViewSectionedReloadDataSource<SectionModel<String, CellModel>>!
     var cartSections = PublishRelay<[SectionModel<String, CellModel>]>()
     var totalPrice = ""
     
@@ -50,20 +49,6 @@ final class CartViewPresenter: CartViewPresenterInterface, CartViewPresenterInpu
     }
     
     private func configureTableViewDataSource() {
-//        dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, CellModel>>(configureCell: { [weak self]  dataSource, tableView, indexPath, item in
-//            guard let self = self else { return  UITableViewCell() }
-//            switch item {
-//            case .cartCell(let cartItem):
-//                return self.getCartItemCell(with: cartItem, from: tableView, indexPath: indexPath)
-//            case .totalPriceCell:
-//                return self.getTotalPriceCell(from: tableView, indexPath: indexPath)
-//            }
-//        })
-        
-//        cartSections.asObservable()
-//            .bind(to: tableView.rx.items(dataSource: dataSource))
-//           .disposed(by: bag)
-        
         self.cartItemList.asDriver(onErrorJustReturn: []).drive { [weak self] (cartItems) in
             let priceData = cartItems.map { Int($0.price ?? "0") ?? 0}
             let price = priceData.reduce(0) { $0 + $1 }
