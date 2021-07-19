@@ -8,16 +8,17 @@
 import UIKit
 
 class CartTotalTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var deliveryInfoLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func update(with total: String) {
+        priceLabel.text = total.getFormattedPrice(with: Constant.ItemCell.currency)
     }
     
 }

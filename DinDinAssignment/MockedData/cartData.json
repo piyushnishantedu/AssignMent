@@ -1,0 +1,25 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": [ {
+        "url" : "https://image.freepik.com/free-photo/chicken-skewers-with-slices-sweet-peppers-dill_2829-18813.jpg",
+        "name": "Test Name",
+        "price": "40"
+    },
+    {
+        "url" : "https://image.freepik.com/free-photo/tasty-shrimps-with-spices-sauce-board-dark-surface_1220-5957.jpg",
+        "name": "Test Name",
+        "price": "50"
+    },
+    {
+        "url" : "https://cdn.stocksnap.io/img-thumbs/960w/camp-cooking_AWIJ3PXKJE.jpg",
+        "name": "Test Name",
+        "price": "40"
+    },
+    {
+        "url" : "https://cdn.stocksnap.io/img-thumbs/960w/corn-sausage_XLQHKJKZSG.jpg",
+        "name": "Test Name",
+        "price": "70"
+    }
+    ]
+}

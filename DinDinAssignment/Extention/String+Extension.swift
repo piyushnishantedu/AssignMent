@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+extension String {
+    var dataEncoded: Data? {
+        return self.data(using: .utf8)
+    }
+    
+    func getFormattedPrice(with currency: String) -> String {
+        return self + " \(currency)"
+    }
+}

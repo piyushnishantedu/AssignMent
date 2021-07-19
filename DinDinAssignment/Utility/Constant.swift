@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct Constant {
+    struct ItemCell {
+        static let addOne = "Add + 1"
+        static let currency = "Usd"
+    }
+}

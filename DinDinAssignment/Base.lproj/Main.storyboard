@@ -1,24 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomeViewController" customModule="DinDinAssignment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zL8-i5-0Rq" userLabel="ContentView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yq1-C0-usb" customClass="BannerView" customModule="DinDinAssignment" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="572.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="yq1-C0-usb" firstAttribute="leading" secondItem="zL8-i5-0Rq" secondAttribute="leading" id="QkE-Pb-PNt"/>
+                                    <constraint firstItem="yq1-C0-usb" firstAttribute="top" secondItem="zL8-i5-0Rq" secondAttribute="top" id="R7F-Mf-i55"/>
+                                    <constraint firstItem="yq1-C0-usb" firstAttribute="height" secondItem="zL8-i5-0Rq" secondAttribute="height" multiplier="0.7" id="djS-gw-2CU"/>
+                                    <constraint firstAttribute="trailing" secondItem="yq1-C0-usb" secondAttribute="trailing" id="p61-Yg-m5V"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zL8-i5-0Rq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6pF-Tz-TCU"/>
+                            <constraint firstItem="zL8-i5-0Rq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GFn-kF-tYC"/>
+                            <constraint firstItem="zL8-i5-0Rq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="K7D-Ms-4La"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zL8-i5-0Rq" secondAttribute="trailing" id="tdK-ma-Dza"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ye9-bt-b2W"/>
+                    <connections>
+                        <outlet property="bannerView" destination="yq1-C0-usb" id="1cs-R2-9Kl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2749.275362318841" y="77.678571428571431"/>
+        </scene>
+        <!--Food List View Controller-->
+        <scene sceneID="u4w-he-k1C">
+            <objects>
+                <viewController storyboardIdentifier="FoodListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xZu-fD-wtk" customClass="FoodListViewController" customModule="DinDinAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6NC-Dg-mnV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYq-jM-Ntq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rxp-hQ-C6G">
+                                        <rect key="frame" x="20" y="50" width="374" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryn-Sj-dG8">
+                                                <rect key="frame" x="0.0" y="0.0" width="119.5" height="30"/>
+                                                <state key="normal" title="Pizza"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ejh-JN-zZW">
+                                                <rect key="frame" x="127.5" y="0.0" width="119" height="30"/>
+                                                <state key="normal" title="Sushi"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6x-HM-LrV">
+                                                <rect key="frame" x="254.5" y="0.0" width="119.5" height="30"/>
+                                                <state key="normal" title="Drinks"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="rxp-hQ-C6G" firstAttribute="top" secondItem="eYq-jM-Ntq" secondAttribute="top" constant="50" id="HO0-bf-MOC"/>
+                                    <constraint firstAttribute="trailing" secondItem="rxp-hQ-C6G" secondAttribute="trailing" constant="20" id="TFJ-pQ-Vgs"/>
+                                    <constraint firstAttribute="height" constant="100" id="WZK-92-wVJ"/>
+                                    <constraint firstItem="rxp-hQ-C6G" firstAttribute="leading" secondItem="eYq-jM-Ntq" secondAttribute="leading" constant="20" id="v9Y-J9-qYw"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DIE-bw-WZw">
+                                <rect key="frame" x="0.0" y="108" width="414" height="754"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qe-0x-mY1" customClass="CartButton" customModule="DinDinAssignment" customModuleProvider="target">
+                                <rect key="frame" x="314" y="702" width="60" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Y0H-Vs-yxK"/>
+                                    <constraint firstAttribute="width" secondItem="5qe-0x-mY1" secondAttribute="height" multiplier="1:1" id="qud-ad-gWQ"/>
+                                </constraints>
+                                <state key="normal" image="cart"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="svL-fp-Jl2"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="svL-fp-Jl2" firstAttribute="trailing" secondItem="5qe-0x-mY1" secondAttribute="trailing" constant="40" id="0vS-PA-Gin"/>
+                            <constraint firstItem="svL-fp-Jl2" firstAttribute="bottom" secondItem="5qe-0x-mY1" secondAttribute="bottom" constant="100" id="AfV-K2-1eR"/>
+                            <constraint firstItem="DIE-bw-WZw" firstAttribute="leading" secondItem="svL-fp-Jl2" secondAttribute="leading" id="JTC-xv-5jw"/>
+                            <constraint firstItem="DIE-bw-WZw" firstAttribute="bottom" secondItem="svL-fp-Jl2" secondAttribute="bottom" id="RNB-Dw-AMl"/>
+                            <constraint firstItem="eYq-jM-Ntq" firstAttribute="leading" secondItem="svL-fp-Jl2" secondAttribute="leading" id="V55-lS-Db6"/>
+                            <constraint firstItem="eYq-jM-Ntq" firstAttribute="top" secondItem="6NC-Dg-mnV" secondAttribute="top" id="f00-ZI-Bes"/>
+                            <constraint firstItem="DIE-bw-WZw" firstAttribute="top" secondItem="eYq-jM-Ntq" secondAttribute="bottom" constant="8" symbolic="YES" id="ris-nf-BbX"/>
+                            <constraint firstItem="svL-fp-Jl2" firstAttribute="trailing" secondItem="DIE-bw-WZw" secondAttribute="trailing" id="xDC-wM-rWI"/>
+                            <constraint firstItem="svL-fp-Jl2" firstAttribute="trailing" secondItem="eYq-jM-Ntq" secondAttribute="trailing" id="xcU-sL-Q7v"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cartButton" destination="5qe-0x-mY1" id="MJ3-LP-UPO"/>
+                        <outlet property="drinksButton" destination="a6x-HM-LrV" id="3Yg-xl-yjV"/>
+                        <outlet property="foodMenuView" destination="eYq-jM-Ntq" id="QNw-h7-jhN"/>
+                        <outlet property="itemListView" destination="DIE-bw-WZw" id="UH7-Lg-R8M"/>
+                        <outlet property="pizzaButton" destination="ryn-Sj-dG8" id="fbI-Ya-ebr"/>
+                        <outlet property="sushiButton" destination="Ejh-JN-zZW" id="jcK-qk-jPq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z6G-NQ-siP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3576.811594202899" y="77.678571428571431"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cart" width="128" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
