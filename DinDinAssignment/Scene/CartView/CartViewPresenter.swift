@@ -12,6 +12,7 @@ import RxDataSources
 import UIKit
 
 final class CartViewPresenter: CartViewPresenterInterface, CartViewPresenterInput, CartViewPresenterOutPut {
+    
     var input: CartViewPresenterInput { self }
     var output: CartViewPresenterOutPut { self }
     
@@ -21,6 +22,7 @@ final class CartViewPresenter: CartViewPresenterInterface, CartViewPresenterInpu
     var getCartItem: PublishRelay<Void> = PublishRelay<Void>()
     var cartSections = PublishRelay<[SectionModel<String, CellModel>]>()
     var totalPrice = ""
+    var cartItemRemoveAction: PublishRelay<Int?> = PublishRelay<Int?>()
     
     //Output
     var cartItemList: PublishRelay<[CartItem]>
@@ -30,6 +32,7 @@ final class CartViewPresenter: CartViewPresenterInterface, CartViewPresenterInpu
     
     private let dependencies: CartViewPresenterDependencies
     private let bag = DisposeBag()
+    private var cartList = [CartItem]()
     
     init(dependencies: CartViewPresenterDependencies) {
         self.dependencies = dependencies
@@ -46,10 +49,18 @@ final class CartViewPresenter: CartViewPresenterInterface, CartViewPresenterInpu
         viewDidLoadTrigger.asDriver(onErrorJustReturn: ()).drive { [weak self] (_) in
             self?.dependencies.interactor.getCartItems()
         }.disposed(by: bag)
+        
+        cartItemRemoveAction.asDriver(onErrorJustReturn: -10).drive { [weak self] (index) in
+            guard let self  = self, let row = index else  { return }
+            self.cartList.remove(at: row)
+            self.cartItemList.accept(self.cartList)
+        }.disposed(by: bag)
+
     }
     
     private func configureTableViewDataSource() {
         self.cartItemList.asDriver(onErrorJustReturn: []).drive { [weak self] (cartItems) in
+            self?.cartList = cartItems
             let priceData = cartItems.map { Int($0.price ?? "0") ?? 0}
             let price = priceData.reduce(0) { $0 + $1 }
             self?.totalPrice = "\(price)"

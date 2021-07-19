@@ -30,7 +30,6 @@ class CartViewController: UIViewController, NavigationBarAppearance {
     
     
     var cartViewPresenter: CartViewPresenterInterface!
-//    private let cartItems = PublishRelay<[CartItem]>()
     private let cartSections = PublishRelay<[SectionModel<String, CellModel>]>()
     private var dataSource: RxTableViewSectionedReloadDataSource<SectionModel<String, CellModel>>!
     
@@ -71,17 +70,17 @@ class CartViewController: UIViewController, NavigationBarAppearance {
         cartSections.asObservable()
             .bind(to: cartItemTableView.rx.items(dataSource: dataSource))
            .disposed(by: bag)
-        
-//        cartViewPresenter.output.cartItemList.asDriver(onErrorJustReturn: []).drive { [weak self] (cartItems) in
-//            self?.cartItems.accept(cartItems)
-//        }.disposed(by: bag)
-
     }
     
     private func getCartItemCell(with cartItem: CartItem, from table: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: Constant.CartViewController.CellIdentifier.cartItemTableViewCell.rawValue, for: indexPath) as? CartItemTableViewCell
-        cell?.update(with: cartItem)
-        return cell ?? UITableViewCell()
+        guard let tableCell = cell else { return  UITableViewCell()}
+        
+        tableCell.update(with: cartItem, tag: indexPath.row)
+        tableCell.removeButton.rx.tap.asDriver().drive { [weak self] (_) in
+            self?.cartViewPresenter.input.cartItemRemoveAction.accept(tableCell.removeButton.tag)
+        }.disposed(by: tableCell.bag)
+        return tableCell
     }
     
     private func getTotalPriceCell(from table: UITableView, indexPath: IndexPath) -> UITableViewCell {

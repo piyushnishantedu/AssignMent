@@ -20,6 +20,7 @@ protocol CartViewPresenterInput {
     var viewDidLoadTrigger: PublishRelay<Void> {  get }
     var getCartItem: PublishRelay<Void> { get }
     var cartSections: PublishRelay<[SectionModel<String, CellModel>]> { get }
+    var cartItemRemoveAction: PublishRelay<Int?> { get }
 }
 
 protocol CartViewPresenterOutPut {
